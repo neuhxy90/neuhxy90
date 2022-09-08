@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"neuhxy90.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Doris概念Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="doris学习笔记">
+<meta property="og:url" content="https://neuhxy90.github.io/2022/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93/doris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="neuhxy 的随笔">
+<meta property="og:description" content="Doris概念Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日志">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-21T14:05:16.000Z">
+<meta property="article:modified_time" content="2022-09-08T07:32:41.797Z">
+<meta property="article:author" content="neuhxy">
+<meta property="article:tag" content="doris">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://neuhxy90.github.io/2022/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93/doris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://neuhxy90.github.io/2022/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93/doris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"2022/08/21/数据库/doris学习笔记/","title":"doris学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>doris学习笔记 | neuhxy 的随笔</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">neuhxy 的随笔</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Doris%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">Doris概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Doris%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">Doris数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E6%A8%A1%E5%9E%8B%EF%BC%88Aggregate%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">聚合模型（Aggregate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%94%AF%E4%B8%80%E6%80%A7%E6%A8%A1%E5%9E%8B%EF%BC%88Unique%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">唯一性模型（Unique）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%AF%E6%9C%AC%E6%A8%A1%E5%9E%8B%EF%BC%88Duplicate%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">副本模型（Duplicate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.1.4.</span> <span class="nav-text">数据模型的选择建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E8%A1%A8%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">建表语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">列的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88key%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">聚合key的类型</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="neuhxy"
+      src="https://avatars.githubusercontent.com/u/8110174?v=4">
+  <p class="site-author-name" itemprop="name">neuhxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/08/21/%E6%95%B0%E6%8D%AE%E5%BA%93/doris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
+      <meta itemprop="name" content="neuhxy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="doris学习笔记 | neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          doris学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-21 22:05:16" itemprop="dateCreated datePublished" datetime="2022-08-21T22:05:16+08:00">2022-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-08 15:32:41" itemprop="dateModified" datetime="2022-09-08T15:32:41+08:00">2022-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Doris概念"><a href="#Doris概念" class="headerlink" title="Doris概念"></a>Doris概念</h1><p>Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日志检索分析、用户画像分析、订单分析等应用。</p>
+<h2 id="Doris数据表"><a href="#Doris数据表" class="headerlink" title="Doris数据表"></a>Doris数据表</h2><p>在 Doris 中，数据以表（Table）的形式进行逻辑上的描述。 一张表包括行（Row）和列（Column）。Row 即用户的一行数据。Column 用于描述一行数据中不同的字段。</p>
+<p>Column 可以分为两大类：Key 和 Value。从业务角度看，Key 和 Value 可以分别对应维度列和指标列。</p>
+<p>Doris 的数据模型主要分为3类:</p>
+<ul>
+<li>Aggregate（聚合模型）</li>
+<li>Unique</li>
+<li>Duplicate</li>
+</ul>
+<h3 id="聚合模型（Aggregate）"><a href="#聚合模型（Aggregate）" class="headerlink" title="聚合模型（Aggregate）"></a>聚合模型（Aggregate）</h3><p>首先介绍聚合模型的数据表：所谓聚合，就是包含了一部分自动计算处理功能的数据表。传统的MySQL数据表相当于一个数据明细表，而聚合表能够实现：导入数据时，对于 Key 列相同的行会聚合成一行，而 Value 列会按照设置的 <code>AggregationType</code> 进行聚合。 <code>AggregationType</code> 目前有以下四种聚合方式：</p>
+<ol>
+<li>SUM：求和，多行的 Value 进行累加。</li>
+<li>REPLACE：替代，下一批数据中的 Value 会替换之前导入过的行中的 Value。</li>
+<li>MAX：保留最大值。</li>
+<li>MIN：保留最小值。</li>
+</ol>
+<p>注意这里需要设置聚合表的Key值所在列，即数据合并时根据哪些信息判断这个记录是否存在，如果存在则聚合，否则新增一条记录。</p>
+<p>如果想要在聚合表里像传统MySQL表那样保留明细，可以添加一列<code>timestamp</code>作为聚合的key，这样key值不完全相同就能保存明细了。</p>
+<h3 id="唯一性模型（Unique）"><a href="#唯一性模型（Unique）" class="headerlink" title="唯一性模型（Unique）"></a>唯一性模型（Unique）</h3><p>这类模型不需要自动计算业务，只需要保证主键唯一性即可，有点类似MySQL的表结构。即 <code>Unique</code> 模型完全可以用聚合模型中的 <code>REPLACE</code> 方式替代。其内部的实现方式和数据存储方式也完全一样。</p>
+<h3 id="副本模型（Duplicate）"><a href="#副本模型（Duplicate）" class="headerlink" title="副本模型（Duplicate）"></a>副本模型（Duplicate）</h3><p>区别于聚合模型和唯一性模型，副本模型允许重复记录存在，及重复数据插入时，不自定聚合，也不自动更新，保留每次插入的原始记录。</p>
+<h3 id="数据模型的选择建议"><a href="#数据模型的选择建议" class="headerlink" title="数据模型的选择建议"></a>数据模型的选择建议</h3><p>因为Doris里的数据模型在建表时就已经确定，且<strong>无法修改</strong>。所以，选择一个合适的数据模型<strong>非常重要</strong>。</p>
+<ol>
+<li><p>Aggregate 模型可以通过预聚合，极大地降低聚合查询时所需扫描的数据量和查询的计算量，非常适合有固定模式的报表类查询场景。但是该模型对 <code>count(*)</code> 查询很不友好。同时因为固定了 Value 列上的聚合方式，在进行其他类型的聚合查询时，需要考虑语意正确性。</p>
+</li>
+<li><p>Unique 模型针对需要唯一主键约束的场景，可以保证主键唯一性约束。但是无法利用 ROLLUP 等预聚合带来的查询优势（因为本质是 REPLACE，没有 SUM 这种聚合方式）。</p>
+<blockquote>
+<p><strong>【注意】</strong>Unique 模型仅支持整行更新，如果用户既需要唯一主键约束，又需要更新部分列（例如将多张源表导入到一张 doris 表的情形），则可以考虑使用 Aggregate 模型，同时将非主键列的聚合类型设置为 REPLACE_IF_NOT_NULL。具体的用法可以参考<a target="_blank" rel="noopener" href="https://doris.apache.org/zh-CN/docs/sql-manual/sql-reference/Data-Definition-Statements/Create/CREATE-TABLE">语法手册</a></p>
+</blockquote>
+</li>
+<li><p>Duplicate 适合任意维度的 Ad-hoc 查询。虽然同样无法利用预聚合的特性，但是不受聚合模型的约束，可以发挥列存模型的优势（只读取相关列，而不需要读取所有 Key 列）。</p>
+</li>
+</ol>
+<h2 id="建表语法"><a href="#建表语法" class="headerlink" title="建表语法"></a>建表语法</h2><h3 id="列的类型"><a href="#列的类型" class="headerlink" title="列的类型"></a>列的类型</h3><blockquote>
+<p>TINYINT（1字节）<br>    范围：-2^7 + 1 ~ 2^7 - 1<br>SMALLINT（2字节）<br>    范围：-2^15 + 1 ~ 2^15 - 1<br>INT（4字节）<br>    范围：-2^31 + 1 ~ 2^31 - 1<br>BIGINT（8字节）<br>    范围：-2^63 + 1 ~ 2^63 - 1<br>LARGEINT（16字节）<br>    范围：-2^127 + 1 ~ 2^127 - 1<br>FLOAT（4字节）<br>    支持科学计数法<br>DOUBLE（12字节）<br>    支持科学计数法<br>DECIMAL[(precision, scale)] (16字节)<br>    保证精度的小数类型。默认是 DECIMAL(10, 0)<br>    precision: 1 ~ 27<br>    scale: 0 ~ 9<br>    其中整数部分为 1 ~ 18<br>    不支持科学计数法<br>DATE（3字节）<br>    范围：0000-01-01 ~ 9999-12-31<br>DATETIME（8字节）<br>    范围：0000-01-01 00:00:00 ~ 9999-12-31 23:59:59<br>CHAR[(length)]<br>    定长字符串。长度范围：1 ~ 255。默认为1<br>VARCHAR[(length)]<br>    变长字符串。长度范围：1 ~ 65533。默认为1<br>STRING<br>    变长字符串。最大（默认）支持1048576 字节（1MB）。String类型的长度还受 be 配置  <code>string_type_length_soft_limit_bytes</code>, 实际能存储的最大长度 取两者最小值，String类型只能用在value 列，不能用在 key 列和分区 分桶列<br>HLL (1~16385个字节)<br>    HyperLogLog 列类型，不需要指定长度和默认值。长度根据数据的聚合程度系统内控制。<br>    必须配合 HLL_UNION 聚合类型使用。<br>BITMAP<br>    bitmap 列类型，不需要指定长度和默认值。表示整型的集合，元素最大支持到2^64 - 1。<br>    必须配合 BITMAP_UNION 聚合类型使用。</p>
+</blockquote>
+<h3 id="聚合key的类型"><a href="#聚合key的类型" class="headerlink" title="聚合key的类型"></a>聚合key的类型</h3><blockquote>
+<p>SUM：求和。适用数值类型。<br>MIN：求最小值。适合数值类型。<br>MAX：求最大值。适合数值类型。<br>REPLACE：替换。对于维度列相同的行，指标列会按照导入的先后顺序，后倒入的替换先导入的。<br>REPLACE_IF_NOT_NULL：非空值替换。和 REPLACE 的区别在于对于null值，不做替换。这里要注意的是字段默认值要给NULL，而不能是空字符串，如果是空字符串，会给你替换成空字符串。<br>HLL_UNION：HLL 类型的列的聚合方式，通过 HyperLogLog 算法聚合。<br>BITMAP_UNION：BIMTAP 类型的列的聚合方式，进行位图的并集聚合。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/doris/" rel="tag"># doris</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/16/%E9%A1%B9%E7%9B%AE/%E9%92%89%E9%92%89%E8%80%83%E5%8B%A4%E8%AE%B0%E5%BD%95/" rel="prev" title="钉钉考勤记录">
+                  <i class="fa fa-chevron-left"></i> 钉钉考勤记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/02/%E6%97%A5%E5%BF%97/" rel="next" title="时间都去哪了">
+                  时间都去哪了 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">neuhxy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

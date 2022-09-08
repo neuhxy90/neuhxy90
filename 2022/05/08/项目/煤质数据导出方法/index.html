@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"neuhxy90.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="有内容被加密了, 请输入密码查看.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="煤质数据导出方法">
+<meta property="og:url" content="https://neuhxy90.github.io/2022/05/08/%E9%A1%B9%E7%9B%AE/%E7%85%A4%E8%B4%A8%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="neuhxy 的随笔">
+<meta property="og:description" content="有内容被加密了, 请输入密码查看.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-08T01:07:32.000Z">
+<meta property="article:modified_time" content="2022-09-08T07:32:41.809Z">
+<meta property="article:author" content="neuhxy">
+<meta property="article:tag" content="选煤">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://neuhxy90.github.io/2022/05/08/%E9%A1%B9%E7%9B%AE/%E7%85%A4%E8%B4%A8%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%96%B9%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://neuhxy90.github.io/2022/05/08/%E9%A1%B9%E7%9B%AE/%E7%85%A4%E8%B4%A8%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%96%B9%E6%B3%95/","path":"2022/05/08/项目/煤质数据导出方法/","title":"煤质数据导出方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>煤质数据导出方法 | neuhxy 的随笔</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">neuhxy 的随笔</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="neuhxy"
+      src="https://avatars.githubusercontent.com/u/8110174?v=4">
+  <p class="site-author-name" itemprop="name">neuhxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/05/08/%E9%A1%B9%E7%9B%AE/%E7%85%A4%E8%B4%A8%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
+      <meta itemprop="name" content="neuhxy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="煤质数据导出方法 | neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          煤质数据导出方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-08 09:07:32" itemprop="dateCreated datePublished" datetime="2022-05-08T09:07:32+08:00">2022-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-08 15:32:41" itemprop="dateModified" datetime="2022-09-08T15:32:41+08:00">2022-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="27f7a4b7dc234be3f35d987d528781bcef2e3db43298dc877450ddf2d1cc5ca1">7ee581b09f381887930d6e310216a0a1e628a94c7069cf7653fe1a4cd75cebd53ec729709a9fe47be1223341e3d84ab1389ec2db3d61ccf427027f604f6cdff9fd7ddd2e3d8574a5fbbebcc0b3a6de77d18de276598924460db0502a7d34788673851364258d302de55b5a2fcb1ece213acd6590e75e260c678ccd9bd485d473f8bf1c423db01c2805ee1b33d27c140d8fed37e87e4eea4247ced4f90790e00427f541ba64a5a9d16f692234b7c9f7586602538a7855d9e4b77e49024c51cd8b32e35293308b1dfc5d28cdbfb3309378a73105ef00e6c9748c82314e5e3e84778b0a376e84addd694cd6303ed7e423d18ed74f3e8d2b104268755bb4f6059c0a1a3434dbbd35df5b6026d63376ad7ec3db737a3c67138fb7f0f684a568755295a6e5d74124080fa1d311deefb007cee5788017ffac2bb1672ab64c8989e9ade708d9d790f467a1bef48ed698887b241f10d21d8e15716126ea40324f5e35d650e1847d0c44af65ab7a78b245786b4061ca767ece85bf30194f2f292e2270b9704d3ed4a645cd5eb04ccd88ae4d67e54c1a763ce8c364ab4142537f6835f25eba97d0f0faf8f692d2e6c745f98159e6175c6af167c6c66497c9600b2c9bf53f85bf6c958f29416d68f91619360dc308150bda4ee4436b998641e1c66559616a55d8037888c9498053cb7e69e754299139c97d8f45a244f8f288b095be46ca5ba0b0846b910fcf5feee398a7d7315abbbc09d19f0274495fa5c1cc28271b9e4a3f7ea35b41dc818183cf07f8ee3578e3912760d42b10c906b16c923d4895c580c66497a4605996a35d328b536863bfbc077f8755e9ff13377ae6fde1e73fe806f95279b79bfcdc13e341f386f5d717682c7f68a4f0ae2e890dc707b3b97ca3e7444065cd43d0d2cbb52f38f19d299b9d1e2828c546d8e5dab53e3d5fa2719428bf72594d794f483606cd05c27fb3289d6ea4ba4b5ece14f547c2ca9f604e5828194dab5ed4b89c145d74e7df368ad573dc06c97d56ed6fef590914b768bf57e4b605b3e93eb0d940ff5f140c30e7de0778e5b6b0282b3dcdc9be7d826ab0dfb8090ffa37ed42889228035bc0de753f05f125513c5b96789ecf8c189b2b2c03947b866f0941499d8208bdf586ac6d2015330faf40ee9037ad44c23b6ad09f3bdb66a061741f0dbba5fb82bb6868f969d93984343537f491fb1b1440a883020697c522a14d4a3706966660866e744aef6a90f59d6c341fedf3607ec0d85114a83c23b666dda8f92991ddef5eac96fa9a3e048f4cd440c82fa664704cd01e3b1ddd0f516b198196a8bd313bdc156694c7fdd1fdd4ce6b1af3d145b60123deadabe1f549616bab2bd95023395fb7e5be6df316f50515a077aae21608b9dc4e63c753d3edbb4c432b020eca6a2808f9d40c434ff469502116e0f204769c2adb16756a1a5f8f22d302bf3ef7cfdf78f846d2f746</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-flip">
+      <input class="hbe hbe-input-field hbe-input-field-flip" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-flip" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-flip" data-content="您好, 这里需要密码.">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%80%89%E7%85%A4/" rel="tag"># 选煤</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/01/%E9%A1%B9%E7%9B%AE/KrakenD%E7%BD%91%E5%85%B3%E5%8D%87%E7%BA%A7/" rel="prev" title="KrakenD网关升级">
+                  <i class="fa fa-chevron-left"></i> KrakenD网关升级
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/13/%E9%A1%B9%E7%9B%AE/VPN%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/" rel="next" title="局域网IP设置">
+                  局域网IP设置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">neuhxy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
