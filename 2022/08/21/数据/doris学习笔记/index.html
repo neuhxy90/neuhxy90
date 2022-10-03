@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"neuhxy90.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Doris概念Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日志">
+    <meta name="description" content="Doris概念 Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日">
 <meta property="og:type" content="article">
 <meta property="og:title" content="doris学习笔记">
 <meta property="og:url" content="https://neuhxy90.github.io/2022/08/21/%E6%95%B0%E6%8D%AE/doris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="neuhxy 的随笔">
-<meta property="og:description" content="Doris概念Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日志">
+<meta property="og:description" content="Doris概念 Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-21T14:05:16.000Z">
 <meta property="article:modified_time" content="2022-09-08T13:50:21.543Z">
@@ -87,7 +87,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">32</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">35</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Doris%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">Doris概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Doris%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">Doris数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E6%A8%A1%E5%9E%8B%EF%BC%88Aggregate%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">聚合模型（Aggregate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%94%AF%E4%B8%80%E6%80%A7%E6%A8%A1%E5%9E%8B%EF%BC%88Unique%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">唯一性模型（Unique）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%AF%E6%9C%AC%E6%A8%A1%E5%9E%8B%EF%BC%88Duplicate%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">副本模型（Duplicate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.1.4.</span> <span class="nav-text">数据模型的选择建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E8%A1%A8%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">建表语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">列的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88key%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">聚合key的类型</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#doris%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">Doris概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#doris%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">Doris数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E6%A8%A1%E5%9E%8Baggregate"><span class="nav-number">1.1.1.</span> <span class="nav-text">聚合模型（Aggregate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%94%AF%E4%B8%80%E6%80%A7%E6%A8%A1%E5%9E%8Bunique"><span class="nav-number">1.1.2.</span> <span class="nav-text">唯一性模型（Unique）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%AF%E6%9C%AC%E6%A8%A1%E5%9E%8Bduplicate"><span class="nav-number">1.1.3.</span> <span class="nav-text">副本模型（Duplicate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.1.4.</span> <span class="nav-text">数据模型的选择建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E8%A1%A8%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">建表语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">列的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88key%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">聚合key的类型</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -170,7 +170,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -268,45 +268,99 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Doris概念"><a href="#Doris概念" class="headerlink" title="Doris概念"></a>Doris概念</h1><p>Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日志检索分析、用户画像分析、订单分析等应用。</p>
+        <h1 id="doris概念">Doris概念</h1>
+<p>Apache Doris 是一个基于 MPP
+架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache
+Doris
+能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB
+实验平台、日志检索分析、用户画像分析、订单分析等应用。</p>
 <span id="more"></span>
-
-<h2 id="Doris数据表"><a href="#Doris数据表" class="headerlink" title="Doris数据表"></a>Doris数据表</h2><p>在 Doris 中，数据以表（Table）的形式进行逻辑上的描述。 一张表包括行（Row）和列（Column）。Row 即用户的一行数据。Column 用于描述一行数据中不同的字段。</p>
-<p>Column 可以分为两大类：Key 和 Value。从业务角度看，Key 和 Value 可以分别对应维度列和指标列。</p>
+<h2 id="doris数据表">Doris数据表</h2>
+<p>在 Doris 中，数据以表（Table）的形式进行逻辑上的描述。
+一张表包括行（Row）和列（Column）。Row 即用户的一行数据。Column
+用于描述一行数据中不同的字段。</p>
+<p>Column 可以分为两大类：Key 和 Value。从业务角度看，Key 和 Value
+可以分别对应维度列和指标列。</p>
 <p>Doris 的数据模型主要分为3类:</p>
 <ul>
 <li>Aggregate（聚合模型）</li>
 <li>Unique</li>
 <li>Duplicate</li>
 </ul>
-<h3 id="聚合模型（Aggregate）"><a href="#聚合模型（Aggregate）" class="headerlink" title="聚合模型（Aggregate）"></a>聚合模型（Aggregate）</h3><p>首先介绍聚合模型的数据表：所谓聚合，就是包含了一部分自动计算处理功能的数据表。传统的MySQL数据表相当于一个数据明细表，而聚合表能够实现：导入数据时，对于 Key 列相同的行会聚合成一行，而 Value 列会按照设置的 <code>AggregationType</code> 进行聚合。 <code>AggregationType</code> 目前有以下四种聚合方式：</p>
-<ol>
+<h3 id="聚合模型aggregate">聚合模型（Aggregate）</h3>
+<p>首先介绍聚合模型的数据表：所谓聚合，就是包含了一部分自动计算处理功能的数据表。传统的MySQL数据表相当于一个数据明细表，而聚合表能够实现：导入数据时，对于
+Key 列相同的行会聚合成一行，而 Value 列会按照设置的
+<code>AggregationType</code> 进行聚合。 <code>AggregationType</code>
+目前有以下四种聚合方式：</p>
+<ol type="1">
 <li>SUM：求和，多行的 Value 进行累加。</li>
-<li>REPLACE：替代，下一批数据中的 Value 会替换之前导入过的行中的 Value。</li>
+<li>REPLACE：替代，下一批数据中的 Value 会替换之前导入过的行中的
+Value。</li>
 <li>MAX：保留最大值。</li>
 <li>MIN：保留最小值。</li>
 </ol>
 <p>注意这里需要设置聚合表的Key值所在列，即数据合并时根据哪些信息判断这个记录是否存在，如果存在则聚合，否则新增一条记录。</p>
 <p>如果想要在聚合表里像传统MySQL表那样保留明细，可以添加一列<code>timestamp</code>作为聚合的key，这样key值不完全相同就能保存明细了。</p>
-<h3 id="唯一性模型（Unique）"><a href="#唯一性模型（Unique）" class="headerlink" title="唯一性模型（Unique）"></a>唯一性模型（Unique）</h3><p>这类模型不需要自动计算业务，只需要保证主键唯一性即可，有点类似MySQL的表结构。即 <code>Unique</code> 模型完全可以用聚合模型中的 <code>REPLACE</code> 方式替代。其内部的实现方式和数据存储方式也完全一样。</p>
-<h3 id="副本模型（Duplicate）"><a href="#副本模型（Duplicate）" class="headerlink" title="副本模型（Duplicate）"></a>副本模型（Duplicate）</h3><p>区别于聚合模型和唯一性模型，副本模型允许重复记录存在，及重复数据插入时，不自定聚合，也不自动更新，保留每次插入的原始记录。</p>
-<h3 id="数据模型的选择建议"><a href="#数据模型的选择建议" class="headerlink" title="数据模型的选择建议"></a>数据模型的选择建议</h3><p>因为Doris里的数据模型在建表时就已经确定，且<strong>无法修改</strong>。所以，选择一个合适的数据模型<strong>非常重要</strong>。</p>
-<ol>
-<li><p>Aggregate 模型可以通过预聚合，极大地降低聚合查询时所需扫描的数据量和查询的计算量，非常适合有固定模式的报表类查询场景。但是该模型对 <code>count(*)</code> 查询很不友好。同时因为固定了 Value 列上的聚合方式，在进行其他类型的聚合查询时，需要考虑语意正确性。</p>
-</li>
-<li><p>Unique 模型针对需要唯一主键约束的场景，可以保证主键唯一性约束。但是无法利用 ROLLUP 等预聚合带来的查询优势（因为本质是 REPLACE，没有 SUM 这种聚合方式）。</p>
+<h3 id="唯一性模型unique">唯一性模型（Unique）</h3>
+<p>这类模型不需要自动计算业务，只需要保证主键唯一性即可，有点类似MySQL的表结构。即
+<code>Unique</code> 模型完全可以用聚合模型中的 <code>REPLACE</code>
+方式替代。其内部的实现方式和数据存储方式也完全一样。</p>
+<h3 id="副本模型duplicate">副本模型（Duplicate）</h3>
+<p>区别于聚合模型和唯一性模型，副本模型允许重复记录存在，及重复数据插入时，不自定聚合，也不自动更新，保留每次插入的原始记录。</p>
+<h3 id="数据模型的选择建议">数据模型的选择建议</h3>
+<p>因为Doris里的数据模型在建表时就已经确定，且<strong>无法修改</strong>。所以，选择一个合适的数据模型<strong>非常重要</strong>。</p>
+<ol type="1">
+<li><p>Aggregate
+模型可以通过预聚合，极大地降低聚合查询时所需扫描的数据量和查询的计算量，非常适合有固定模式的报表类查询场景。但是该模型对
+<code>count(*)</code> 查询很不友好。同时因为固定了 Value
+列上的聚合方式，在进行其他类型的聚合查询时，需要考虑语意正确性。</p></li>
+<li><p>Unique
+模型针对需要唯一主键约束的场景，可以保证主键唯一性约束。但是无法利用
+ROLLUP 等预聚合带来的查询优势（因为本质是 REPLACE，没有 SUM
+这种聚合方式）。</p>
 <blockquote>
-<p><strong>【注意】</strong>Unique 模型仅支持整行更新，如果用户既需要唯一主键约束，又需要更新部分列（例如将多张源表导入到一张 doris 表的情形），则可以考虑使用 Aggregate 模型，同时将非主键列的聚合类型设置为 REPLACE_IF_NOT_NULL。具体的用法可以参考<a target="_blank" rel="noopener" href="https://doris.apache.org/zh-CN/docs/sql-manual/sql-reference/Data-Definition-Statements/Create/CREATE-TABLE">语法手册</a></p>
-</blockquote>
-</li>
-<li><p>Duplicate 适合任意维度的 Ad-hoc 查询。虽然同样无法利用预聚合的特性，但是不受聚合模型的约束，可以发挥列存模型的优势（只读取相关列，而不需要读取所有 Key 列）。</p>
-</li>
+<p><strong>【注意】</strong>Unique
+模型仅支持整行更新，如果用户既需要唯一主键约束，又需要更新部分列（例如将多张源表导入到一张
+doris 表的情形），则可以考虑使用 Aggregate
+模型，同时将非主键列的聚合类型设置为
+REPLACE_IF_NOT_NULL。具体的用法可以参考<a
+target="_blank" rel="noopener" href="https://doris.apache.org/zh-CN/docs/sql-manual/sql-reference/Data-Definition-Statements/Create/CREATE-TABLE">语法手册</a></p>
+</blockquote></li>
+<li><p>Duplicate 适合任意维度的 Ad-hoc
+查询。虽然同样无法利用预聚合的特性，但是不受聚合模型的约束，可以发挥列存模型的优势（只读取相关列，而不需要读取所有
+Key 列）。</p></li>
 </ol>
-<h2 id="建表语法"><a href="#建表语法" class="headerlink" title="建表语法"></a>建表语法</h2><h3 id="列的类型"><a href="#列的类型" class="headerlink" title="列的类型"></a>列的类型</h3><blockquote>
-<p>TINYINT（1字节）<br>    范围：-2^7 + 1 ~ 2^7 - 1<br>SMALLINT（2字节）<br>    范围：-2^15 + 1 ~ 2^15 - 1<br>INT（4字节）<br>    范围：-2^31 + 1 ~ 2^31 - 1<br>BIGINT（8字节）<br>    范围：-2^63 + 1 ~ 2^63 - 1<br>LARGEINT（16字节）<br>    范围：-2^127 + 1 ~ 2^127 - 1<br>FLOAT（4字节）<br>    支持科学计数法<br>DOUBLE（12字节）<br>    支持科学计数法<br>DECIMAL[(precision, scale)] (16字节)<br>    保证精度的小数类型。默认是 DECIMAL(10, 0)<br>    precision: 1 ~ 27<br>    scale: 0 ~ 9<br>    其中整数部分为 1 ~ 18<br>    不支持科学计数法<br>DATE（3字节）<br>    范围：0000-01-01 ~ 9999-12-31<br>DATETIME（8字节）<br>    范围：0000-01-01 00:00:00 ~ 9999-12-31 23:59:59<br>CHAR[(length)]<br>    定长字符串。长度范围：1 ~ 255。默认为1<br>VARCHAR[(length)]<br>    变长字符串。长度范围：1 ~ 65533。默认为1<br>STRING<br>    变长字符串。最大（默认）支持1048576 字节（1MB）。String类型的长度还受 be 配置  <code>string_type_length_soft_limit_bytes</code>, 实际能存储的最大长度 取两者最小值，String类型只能用在value 列，不能用在 key 列和分区 分桶列<br>HLL (1~16385个字节)<br>    HyperLogLog 列类型，不需要指定长度和默认值。长度根据数据的聚合程度系统内控制。<br>    必须配合 HLL_UNION 聚合类型使用。<br>BITMAP<br>    bitmap 列类型，不需要指定长度和默认值。表示整型的集合，元素最大支持到2^64 - 1。<br>    必须配合 BITMAP_UNION 聚合类型使用。</p>
+<h2 id="建表语法">建表语法</h2>
+<h3 id="列的类型">列的类型</h3>
+<blockquote>
+<p>TINYINT（1字节） 范围：-2^7 + 1 ~ 2^7 - 1 SMALLINT（2字节）
+范围：-2^15 + 1 ~ 2^15 - 1 INT（4字节） 范围：-2^31 + 1 ~ 2^31 - 1
+BIGINT（8字节） 范围：-2^63 + 1 ~ 2^63 - 1 LARGEINT（16字节）
+范围：-2^127 + 1 ~ 2^127 - 1 FLOAT（4字节） 支持科学计数法
+DOUBLE（12字节） 支持科学计数法 DECIMAL[(precision, scale)] (16字节)
+保证精度的小数类型。默认是 DECIMAL(10, 0) precision: 1 ~ 27 scale: 0 ~ 9
+其中整数部分为 1 ~ 18 不支持科学计数法 DATE（3字节） 范围：0000-01-01 ~
+9999-12-31 DATETIME（8字节） 范围：0000-01-01 00:00:00 ~ 9999-12-31
+23:59:59 CHAR[(length)] 定长字符串。长度范围：1 ~ 255。默认为1
+VARCHAR[(length)] 变长字符串。长度范围：1 ~ 65533。默认为1 STRING
+变长字符串。最大（默认）支持1048576 字节（1MB）。String类型的长度还受 be
+配置 <code>string_type_length_soft_limit_bytes</code>,
+实际能存储的最大长度 取两者最小值，String类型只能用在value 列，不能用在
+key 列和分区 分桶列 HLL (1~16385个字节) HyperLogLog
+列类型，不需要指定长度和默认值。长度根据数据的聚合程度系统内控制。
+必须配合 HLL_UNION 聚合类型使用。 BITMAP bitmap
+列类型，不需要指定长度和默认值。表示整型的集合，元素最大支持到2^64 - 1。
+必须配合 BITMAP_UNION 聚合类型使用。</p>
 </blockquote>
-<h3 id="聚合key的类型"><a href="#聚合key的类型" class="headerlink" title="聚合key的类型"></a>聚合key的类型</h3><blockquote>
-<p>SUM：求和。适用数值类型。<br>MIN：求最小值。适合数值类型。<br>MAX：求最大值。适合数值类型。<br>REPLACE：替换。对于维度列相同的行，指标列会按照导入的先后顺序，后倒入的替换先导入的。<br>REPLACE_IF_NOT_NULL：非空值替换。和 REPLACE 的区别在于对于null值，不做替换。这里要注意的是字段默认值要给NULL，而不能是空字符串，如果是空字符串，会给你替换成空字符串。<br>HLL_UNION：HLL 类型的列的聚合方式，通过 HyperLogLog 算法聚合。<br>BITMAP_UNION：BIMTAP 类型的列的聚合方式，进行位图的并集聚合。</p>
+<h3 id="聚合key的类型">聚合key的类型</h3>
+<blockquote>
+<p>SUM：求和。适用数值类型。 MIN：求最小值。适合数值类型。
+MAX：求最大值。适合数值类型。
+REPLACE：替换。对于维度列相同的行，指标列会按照导入的先后顺序，后倒入的替换先导入的。
+REPLACE_IF_NOT_NULL：非空值替换。和 REPLACE
+的区别在于对于null值，不做替换。这里要注意的是字段默认值要给NULL，而不能是空字符串，如果是空字符串，会给你替换成空字符串。
+HLL_UNION：HLL 类型的列的聚合方式，通过 HyperLogLog 算法聚合。
+BITMAP_UNION：BIMTAP 类型的列的聚合方式，进行位图的并集聚合。</p>
 </blockquote>
 
     </div>
@@ -394,6 +448,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

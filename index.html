@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -82,7 +82,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">32</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">35</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -164,7 +164,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -203,6 +203,304 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/10/03/%E6%9C%8D%E5%8A%A1%E5%99%A8/frp%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
+      <meta itemprop="name" content="neuhxy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/03/%E6%9C%8D%E5%8A%A1%E5%99%A8/frp%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">frp安装及配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-10-03 19:58:35 / 修改时间：23:41:03" itemprop="dateCreated datePublished" datetime="2022-10-03T19:58:35+08:00">2022-10-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="配置腾讯云">1. 配置腾讯云</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在腾讯云服务器下载 frp</span></span><br><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -zxvf frp_0.44.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置服务器端</span></span><br><span class="line"><span class="built_in">cd</span> frp_0.44.0_linux_amd64/</span><br><span class="line">vim frps.ini</span><br></pre></td></tr></table></figure>
+<p>修改如下内容。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_addr</span> = <span class="number">0.0</span>.<span class="number">0.0</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="comment"># 相当于秘钥</span></span><br><span class="line"><span class="attr">token</span> = <span class="number">987654321</span></span><br><span class="line"><span class="attr">vhost_http_port</span> = <span class="number">8080</span></span><br><span class="line"><span class="comment"># 管理界面</span></span><br><span class="line"><span class="attr">dashboard_port</span> = <span class="number">7500</span></span><br><span class="line"><span class="attr">dashboard_user</span> = root</span><br><span class="line"><span class="attr">dashboard_pwd</span> = <span class="number">123456</span></span><br><span class="line"><span class="attr">enable_prometheus</span> = <span class="literal">true</span></span><br><span class="line"><span class="comment"># 日志</span></span><br><span class="line"><span class="attr">log_file</span> = /var/log/frps.log</span><br><span class="line"><span class="attr">log_level</span> = info</span><br><span class="line"><span class="attr">log_max_days</span> = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="section">[web]</span></span><br><span class="line"><span class="attr">type</span> = http</span><br><span class="line"></span><br><span class="line"><span class="section">[portainer]</span></span><br><span class="line"><span class="attr">type</span> = http </span><br><span class="line"></span><br><span class="line"><span class="section">[ds]</span></span><br><span class="line"><span class="attr">type</span> = http</span><br><span class="line"></span><br><span class="line"><span class="section">[task]</span></span><br><span class="line"><span class="attr">type</span> = http</span><br></pre></td></tr></table></figure>
+<p>配置 xxx1,xxx2,xxx3,xxx4.sapi.show 指向腾讯云的公网IP。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># :wq 保存退出</span></span><br><span class="line"><span class="comment"># 然后启动服务，前台启动命令：</span></span><br><span class="line">./frps -c ./frps.ini</span><br><span class="line"><span class="comment"># 后台启动命令为：</span></span><br><span class="line"><span class="built_in">nohup</span> ./frps -c ./frps.ini &amp;</span><br></pre></td></tr></table></figure>
+<p>需要在阿里云/腾讯云 平台级防火墙开启放行相关端口：7000,8080,7500</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/neuhxy90/typora_image/master/image-20221003232009508.png"
+alt="防火墙放行" />
+<figcaption aria-hidden="true">防火墙放行</figcaption>
+</figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果服务器端有操作系统级的防火墙</span></span><br><span class="line">sudo firewall-cmd --permanent --add-port=7000/tcp</span><br><span class="line">sudo firewall-cmd --permanent --add-port=7500/tcp</span><br><span class="line">sudo firewall-cmd --permanent --add-port=8080/tcp</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>保险起见，将frp移动到 /opt目录下，并创建服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建frp存放目录</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /opt/frp</span><br><span class="line"><span class="built_in">cp</span> frps.ini /opt/frp/</span><br><span class="line"><span class="built_in">cp</span> frps /opt/frp/</span><br><span class="line"><span class="built_in">cd</span> /opt/ftp</span><br><span class="line"><span class="comment"># 创建服务，添加如下内容</span></span><br><span class="line"><span class="built_in">touch</span> frps.service</span><br></pre></td></tr></table></figure>
+<p>粘贴如下内容：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Frp Server Service</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="comment"># 如果只有单个 root 用户，必须指定为 root，否则使用默认的 nobody 即可</span></span><br><span class="line"><span class="comment"># User=nobody 报错：code=exited, status=203/EXEC frp</span></span><br><span class="line"><span class="attr">User</span>=root</span><br><span class="line"><span class="attr">Restart</span>=<span class="literal">on</span>-failure</span><br><span class="line"><span class="attr">RestartSec</span>=<span class="number">5</span>s</span><br><span class="line"><span class="comment"># 路径修改</span></span><br><span class="line"><span class="attr">ExecStart</span>=/opt/frp/frps -c /opt/frp/frps.ini</span><br><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">1048576</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># :wq 保存退出</span></span><br><span class="line"><span class="built_in">cp</span> frps.service /usr/lib/systemd/system/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动frps</span></span><br><span class="line">service frps start</span><br><span class="line"><span class="comment"># 停止frps </span></span><br><span class="line">service frps stop</span><br><span class="line"><span class="comment"># 重启frps </span></span><br><span class="line">service frps restart</span><br></pre></td></tr></table></figure>
+<h2 id="配置客户端">2. 配置客户端</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在内网服务器上下载 frp</span></span><br><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -zxvf frp_0.44.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置客户端</span></span><br><span class="line"><span class="built_in">cd</span> frp_0.44.0_linux_amd64/</span><br><span class="line">vim frpc.ini</span><br></pre></td></tr></table></figure>
+<p>修改如下内容：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="comment"># 服务器端IP</span></span><br><span class="line"><span class="attr">server_addr</span> = <span class="number">81.70</span>.xxx.xx</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"><span class="comment"># 注意和服务器端保持一致</span></span><br><span class="line"><span class="attr">token</span> = <span class="number">987654321</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># SSH端口访问控制</span></span><br><span class="line"><span class="section">[ssh]</span></span><br><span class="line"><span class="attr">type</span> = tcp             </span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span> </span><br><span class="line"><span class="attr">local_port</span> = <span class="number">22</span>    </span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">6082</span>   </span><br><span class="line"></span><br><span class="line"><span class="section">[web]</span></span><br><span class="line"><span class="attr">type</span> = http        </span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">80</span></span><br><span class="line"><span class="attr">custom_domains</span> = xxx4.sapi.show</span><br><span class="line"></span><br><span class="line"><span class="section">[portainer]</span></span><br><span class="line"><span class="attr">type</span> = http        </span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">9000</span></span><br><span class="line"><span class="attr">custom_domains</span> = xxx3.sapi.show</span><br><span class="line"></span><br><span class="line"><span class="section">[ds]</span></span><br><span class="line"><span class="attr">type</span> = http        </span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">12345</span></span><br><span class="line"><span class="attr">custom_domains</span> = xxx2.sapi.show</span><br><span class="line"></span><br><span class="line"><span class="section">[task]</span></span><br><span class="line"><span class="attr">type</span> = http        </span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">12345</span></span><br><span class="line"><span class="attr">custom_domains</span> = xxx1.sapi.show</span><br></pre></td></tr></table></figure>
+<p>保存，然后创建服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># :wq 保存退出</span></span><br><span class="line"><span class="comment"># 创建frp存放目录</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /opt/frp</span><br><span class="line"><span class="built_in">cp</span> frps.ini /opt/frp/</span><br><span class="line"><span class="built_in">cp</span> frps /opt/frp/</span><br><span class="line"><span class="built_in">cd</span> /opt/ftp</span><br><span class="line"><span class="comment"># 创建客户端服务</span></span><br><span class="line"><span class="built_in">touch</span> frpc.service</span><br></pre></td></tr></table></figure>
+<p>添加如下内容：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Frp Client Service</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="comment"># 如果只有单个 root 用户，必须指定为 root，否则使用默认的 nobody 即可</span></span><br><span class="line"><span class="comment"># User=nobody 报错：code=exited, status=203/EXEC frp</span></span><br><span class="line"><span class="attr">User</span>=root</span><br><span class="line"><span class="attr">Restart</span>=<span class="literal">on</span>-failure</span><br><span class="line"><span class="attr">RestartSec</span>=<span class="number">5</span>s</span><br><span class="line"><span class="comment"># 路径修改</span></span><br><span class="line"><span class="attr">ExecStart</span>=/opt/frp/frpc -c /opt/frp/frpc.ini</span><br><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">1048576</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># :wq 保存退出</span></span><br><span class="line"><span class="built_in">cp</span> frpc.service /usr/lib/systemd/system/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动frps</span></span><br><span class="line">service frpc start</span><br><span class="line"><span class="comment"># 停止frps </span></span><br><span class="line">service frpc stop</span><br><span class="line"><span class="comment"># 重启frps </span></span><br><span class="line">service frpc restart</span><br></pre></td></tr></table></figure>
+<h2 id="操作">3. 操作</h2>
+<p>ssh的话：ssh 81.70.xxx.xxx:6082即可</p>
+<p>访问：</p>
+<p>http://tj.sapi.show:8080</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/09/22/MacOS/macos%E7%BB%88%E7%AB%AF%E6%A0%B7%E5%BC%8F%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
+      <meta itemprop="name" content="neuhxy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/22/MacOS/macos%E7%BB%88%E7%AB%AF%E6%A0%B7%E5%BC%8F%E4%BC%98%E5%8C%96/" class="post-title-link" itemprop="url">macos操作记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-22 16:05:03" itemprop="dateCreated datePublished" datetime="2022-09-22T16:05:03+08:00">2022-09-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-23 08:18:50" itemprop="dateModified" datetime="2022-09-23T08:18:50+08:00">2022-09-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="终端样式优化">终端样式优化</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装iTerm2</span></span><br><span class="line">brew install iterm2 --cask</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>iTerm2 最常用的主题是 Solarized Dark
+theme，下载地址：http://ethanschoonover.com/solarized</p>
+<p>解压下载的是压缩文件，然后打开
+iTerm2，按<code>Command + ,</code>键，打开 Preferences
+配置界面，然后<code>Profiles -&gt; Colors -&gt; Color Presets -&gt; Import</code>，选择刚才解压的<code>solarized-&gt;iterm2-colors-solarized-&gt;Solarized Dark.itermcolors</code>文件，导入成功，最后选择
+Solarized Dark 主题，就可以了。</p>
+<p>Oh My Zsh
+是对主题的进一步扩展，地址：https://github.com/robbyrussell/oh-my-zsh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装好之后，需要把 Zsh 设置为当前用户的默认 Shell（这样新建标签的时候才会使用 Zsh）</span></span><br><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<p><code>agnoster</code>是比较常用的 zsh
+主题之一，你可以挑选你喜欢的主题，zsh
+主题列表：https://github.com/robbyrussell/oh-my-zsh/wiki/themes</p>
+<p>效果如下（配置了声明高亮）：</p>
+<p>使用上面的主题，需要 Meslo
+字体支持，要不然会出现乱码的情况，字体下载地址：<a
+target="_blank" rel="noopener" href="https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf">Meslo
+LG M Regular for Powerline.ttf</a></p>
+<p>下载好之后，直接在 Mac OS 中安装即可。</p>
+<p>然后打开 iTerm2，按<code>Command + ,</code>键，打开 Preferences
+配置界面，然后<code>Profiles -&gt; Text -&gt; Font -&gt; Chanage Font</code>，选择
+Meslo LG M Regular for Powerline 字体。</p>
+<h2 id="macos快捷键">Macos快捷键</h2>
+<p>设置 win + D 显示桌面</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/neuhxy90/typora_image/master/image-20220922161108823.png"
+alt="image-20220922161108823" />
+<figcaption aria-hidden="true">image-20220922161108823</figcaption>
+</figure>
+<p>对换 ctrl 和 windows 键</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/neuhxy90/typora_image/master/image-20220922161209400.png"
+alt="image-20220922161209400" />
+<figcaption aria-hidden="true">image-20220922161209400</figcaption>
+</figure>
+<p>同时按下 Win + Fn 组合键会导致 Win 键失灵，即锁定 Win 键！ 没想到是
+Win 键被锁定了🔒， 使用 Win + Fn 组合功能键即可解锁 ✅；</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If you come from bash you might have to change your $PATH.</span></span><br><span class="line"><span class="comment"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Path to your oh-my-zsh installation.</span></span><br><span class="line"><span class="built_in">export</span> ZSH=<span class="string">&quot;<span class="variable">$HOME</span>/.oh-my-zsh&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set name of the theme to load --- if set to &quot;random&quot;, it will</span></span><br><span class="line"><span class="comment"># load a random theme each time oh-my-zsh is loaded, in which case,</span></span><br><span class="line"><span class="comment"># to know which specific one was loaded, run: echo $RANDOM_THEME</span></span><br><span class="line"><span class="comment"># See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;agnoster&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set list of themes to pick from when loading at random</span></span><br><span class="line"><span class="comment"># Setting this variable when ZSH_THEME=random will cause zsh to load</span></span><br><span class="line"><span class="comment"># a theme from this variable instead of looking in $ZSH/themes/</span></span><br><span class="line"><span class="comment"># If set to an empty array, this variable will have no effect.</span></span><br><span class="line"><span class="comment"># ZSH_THEME_RANDOM_CANDIDATES=( &quot;robbyrussell&quot; &quot;agnoster&quot; )</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to use case-sensitive completion.</span></span><br><span class="line"><span class="comment"># CASE_SENSITIVE=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to use hyphen-insensitive completion.</span></span><br><span class="line"><span class="comment"># Case-sensitive completion must be off. _ and - will be interchangeable.</span></span><br><span class="line"><span class="comment"># HYPHEN_INSENSITIVE=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment one of the following lines to change the auto-update behavior</span></span><br><span class="line"><span class="comment"># zstyle &#x27;:omz:update&#x27; mode disabled  # disable automatic updates</span></span><br><span class="line"><span class="comment"># zstyle &#x27;:omz:update&#x27; mode auto      # update automatically without asking</span></span><br><span class="line"><span class="comment"># zstyle &#x27;:omz:update&#x27; mode reminder  # just remind me to update when it&#x27;s time</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to change how often to auto-update (in days).</span></span><br><span class="line"><span class="comment"># zstyle &#x27;:omz:update&#x27; frequency 13</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if pasting URLs and other text is messed up.</span></span><br><span class="line"><span class="comment"># DISABLE_MAGIC_FUNCTIONS=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to disable colors in ls.</span></span><br><span class="line"><span class="comment"># DISABLE_LS_COLORS=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to disable auto-setting terminal title.</span></span><br><span class="line"><span class="comment"># DISABLE_AUTO_TITLE=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to enable command auto-correction.</span></span><br><span class="line"><span class="comment"># ENABLE_CORRECTION=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to display red dots whilst waiting for completion.</span></span><br><span class="line"><span class="comment"># You can also set it to another string to have that shown instead of the default red dots.</span></span><br><span class="line"><span class="comment"># e.g. COMPLETION_WAITING_DOTS=&quot;%F&#123;yellow&#125;waiting...%f&quot;</span></span><br><span class="line"><span class="comment"># Caution: this setting can cause issues with multiline prompts in zsh &lt; 5.7.1 (see #5765)</span></span><br><span class="line"><span class="comment"># COMPLETION_WAITING_DOTS=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if you want to disable marking untracked files</span></span><br><span class="line"><span class="comment"># under VCS as dirty. This makes repository status check for large repositories</span></span><br><span class="line"><span class="comment"># much, much faster.</span></span><br><span class="line"><span class="comment"># DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if you want to change the command execution time</span></span><br><span class="line"><span class="comment"># stamp shown in the history command output.</span></span><br><span class="line"><span class="comment"># You can set one of the optional three formats:</span></span><br><span class="line"><span class="comment"># &quot;mm/dd/yyyy&quot;|&quot;dd.mm.yyyy&quot;|&quot;yyyy-mm-dd&quot;</span></span><br><span class="line"><span class="comment"># or set a custom format using the strftime function format specifications,</span></span><br><span class="line"><span class="comment"># see &#x27;man strftime&#x27; for details.</span></span><br><span class="line"><span class="comment"># HIST_STAMPS=&quot;mm/dd/yyyy&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Would you like to use another custom folder than $ZSH/custom?</span></span><br><span class="line"><span class="comment"># ZSH_CUSTOM=/path/to/new-custom-folder</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Which plugins would you like to load?</span></span><br><span class="line"><span class="comment"># Standard plugins can be found in $ZSH/plugins/</span></span><br><span class="line"><span class="comment"># Custom plugins may be added to $ZSH_CUSTOM/plugins/</span></span><br><span class="line"><span class="comment"># Example format: plugins=(rails git textmate ruby lighthouse)</span></span><br><span class="line"><span class="comment"># Add wisely, as too many plugins slow down shell startup.</span></span><br><span class="line">plugins=(git pip autojump zsh-syntax-highlighting zsh-autosuggestions)</span><br><span class="line"></span><br><span class="line">[ -f /usr/local/etc/profile.d/autojump.sh ] &amp;&amp; . /usr/local/etc/profile.d/autojump.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> <span class="variable">$ZSH</span>/oh-my-zsh.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># User configuration</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># export MANPATH=&quot;/usr/local/man:$MANPATH&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># You may need to manually set your language environment</span></span><br><span class="line"><span class="comment"># export LANG=en_US.UTF-8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Preferred editor for local and remote sessions</span></span><br><span class="line"><span class="comment"># if [[ -n $SSH_CONNECTION ]]; then</span></span><br><span class="line"><span class="comment">#   export EDITOR=&#x27;vim&#x27;</span></span><br><span class="line"><span class="comment"># else</span></span><br><span class="line"><span class="comment">#   export EDITOR=&#x27;mvim&#x27;</span></span><br><span class="line"><span class="comment"># fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Compilation flags</span></span><br><span class="line"><span class="comment"># export ARCHFLAGS=&quot;-arch x86_64&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span></span><br><span class="line"><span class="comment"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span></span><br><span class="line"><span class="comment"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span></span><br><span class="line"><span class="comment"># For a full list of active aliases, run `alias`.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example aliases</span></span><br><span class="line"><span class="comment"># alias zshconfig=&quot;mate ~/.zshrc&quot;</span></span><br><span class="line"><span class="comment"># alias ohmyzsh=&quot;mate ~/.oh-my-zsh&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<p>https://www.cnblogs.com/xishuai/p/mac-iterm2.html</p>
+<p>https://zhuanlan.zhihu.com/p/129287351</p>
+<p>https://www.cnblogs.com/xgqfrms/p/16439708.html</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/09/14/%E6%9C%8D%E5%8A%A1%E5%99%A8/centos%E5%AE%89%E8%A3%85NFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
+      <meta itemprop="name" content="neuhxy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/14/%E6%9C%8D%E5%8A%A1%E5%99%A8/centos%E5%AE%89%E8%A3%85NFS/" class="post-title-link" itemprop="url">centos安装NFS</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-09-14 11:55:25 / 修改时间：12:14:04" itemprop="dateCreated datePublished" datetime="2022-09-14T11:55:25+08:00">2022-09-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          有内容被加密了, 请输入密码查看.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/14/%E6%9C%8D%E5%8A%A1%E5%99%A8/centos%E5%AE%89%E8%A3%85NFS/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/09/12/%E6%95%B0%E6%8D%AE/MySQL%E7%BA%B5%E8%A1%A8%E8%BD%AC%E6%A8%AA%E8%A1%A8%E8%A7%86%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -231,9 +529,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-09-12 17:14:30 / 修改时间：17:22:47" itemprop="dateCreated datePublished" datetime="2022-09-12T17:14:30+08:00">2022-09-12</time>
+      <time title="创建时间：2022-09-12 17:14:30" itemprop="dateCreated datePublished" datetime="2022-09-12T17:14:30+08:00">2022-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-14 12:30:41" itemprop="dateModified" datetime="2022-09-14T12:30:41+08:00">2022-09-14</time>
     </span>
 
   
@@ -280,7 +584,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/09/10/macos%E5%AE%89%E8%A3%85brew/">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/09/10/MacOS/macos%E5%AE%89%E8%A3%85brew/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
@@ -298,7 +602,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/10/macos%E5%AE%89%E8%A3%85brew/" class="post-title-link" itemprop="url">macos安装brew</a>
+          <a href="/2022/09/10/MacOS/macos%E5%AE%89%E8%A3%85brew/" class="post-title-link" itemprop="url">macos安装brew</a>
         </h2>
 
         <div class="post-meta-container">
@@ -308,9 +612,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-09-10 11:31:09 / 修改时间：11:32:29" itemprop="dateCreated datePublished" datetime="2022-09-10T11:31:09+08:00">2022-09-10</time>
+      <time title="创建时间：2022-09-10 11:31:09" itemprop="dateCreated datePublished" datetime="2022-09-10T11:31:09+08:00">2022-09-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-15 10:17:27" itemprop="dateModified" datetime="2022-09-15T10:17:27+08:00">2022-09-15</time>
     </span>
 
   
@@ -326,7 +636,7 @@
           有内容被加密了, 请输入密码查看.
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/09/10/macos%E5%AE%89%E8%A3%85brew/#more" rel="contents">
+              <a class="btn" href="/2022/09/10/MacOS/macos%E5%AE%89%E8%A3%85brew/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -470,7 +780,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-08 16:41:04" itemprop="dateModified" datetime="2022-09-08T16:41:04+08:00">2022-09-08</time>
+      <time title="修改时间：2022-10-03 23:42:48" itemprop="dateModified" datetime="2022-10-03T23:42:48+08:00">2022-10-03</time>
     </span>
 
   
@@ -575,7 +885,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Doris概念"><a href="#Doris概念" class="headerlink" title="Doris概念"></a>Doris概念</h1><p>Apache Doris 是一个基于 MPP 架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache Doris 能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB 实验平台、日志检索分析、用户画像分析、订单分析等应用。</p>
+          <h1 id="doris概念">Doris概念</h1>
+<p>Apache Doris 是一个基于 MPP
+架构的高性能、实时的分析型数据库，以极速易用的特点被人们所熟知，仅需亚秒级响应时间即可返回海量数据下的查询结果，不仅可以支持高并发的点查询场景，也能支持高吞吐的复杂分析场景。基于此，Apache
+Doris
+能够较好的满足报表分析、即席查询、统一数仓构建、数据湖联邦查询加速等使用场景，用户可以在此之上构建用户行为分析、AB
+实验平台、日志检索分析、用户画像分析、订单分析等应用。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/08/21/%E6%95%B0%E6%8D%AE/doris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -750,299 +1065,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="1-安装Geth"><a href="#1-安装Geth" class="headerlink" title="1. 安装Geth"></a>1. 安装Geth</h1><blockquote>
-<p>Geth 又名Go Ethereum.是以太坊协议的三种实现之一，由Go语言开发，完全开源的项目。Geth可以被安装在很多操作系统上，包括Windows、Linux、Mac的OSX、Android或者IOS系统.<br>Geth官网：<a target="_blank" rel="noopener" href="https://geth.ethereum.org/">https://geth.ethereum.org/</a><br>Geth的Github地址：<a target="_blank" rel="noopener" href="https://github.com/ethereum/go-ethereum">https://github.com/ethereum/go-ethereum</a><br><strong>geth的作用</strong>：Geth是以太坊协议的具体落地实现，通过Geth，你可以实现以太坊的各种功能,如账户的新建编辑删除，开启挖矿，ether币的转移，智能合约的部署和执行等等</p>
+          <h1 id="安装geth">1. 安装Geth</h1>
+<blockquote>
+<p>Geth 又名Go
+Ethereum.是以太坊协议的三种实现之一，由Go语言开发，完全开源的项目。Geth可以被安装在很多操作系统上，包括Windows、Linux、Mac的OSX、Android或者IOS系统.
+Geth官网：https://geth.ethereum.org/
+Geth的Github地址：https://github.com/ethereum/go-ethereum
+<strong>geth的作用</strong>：Geth是以太坊协议的具体落地实现，通过Geth，你可以实现以太坊的各种功能,如账户的新建编辑删除，开启挖矿，ether币的转移，智能合约的部署和执行等等</p>
 </blockquote>
-<p>下载客户端：<a target="_blank" rel="noopener" href="https://geth.ethereum.org/downloads/">https://geth.ethereum.org/downloads/</a></p>
+<p>下载客户端：<a
+target="_blank" rel="noopener" href="https://geth.ethereum.org/downloads/">https://geth.ethereum.org/downloads/</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/06/20/%E5%8C%BA%E5%9D%97%E9%93%BE/geth%E5%AE%89%E8%A3%85/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/06/12/%E9%A1%B9%E7%9B%AE/%E6%A0%B9%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%9F%E6%88%90python%E6%A8%A1%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
-      <meta itemprop="name" content="neuhxy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="neuhxy 的随笔">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | neuhxy 的随笔">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/12/%E9%A1%B9%E7%9B%AE/%E6%A0%B9%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%9F%E6%88%90python%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">根据数据库生成python模型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-06-12 22:25:35" itemprop="dateCreated datePublished" datetime="2022-06-12T22:25:35+08:00">2022-06-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-08 15:32:41" itemprop="dateModified" datetime="2022-09-08T15:32:41+08:00">2022-09-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          有内容被加密了, 请输入密码查看.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/06/12/%E9%A1%B9%E7%9B%AE/%E6%A0%B9%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%9F%E6%88%90python%E6%A8%A1%E5%9E%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/06/09/%E6%95%B0%E6%8D%AE/TDengine%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
-      <meta itemprop="name" content="neuhxy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="neuhxy 的随笔">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | neuhxy 的随笔">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/09/%E6%95%B0%E6%8D%AE/TDengine%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">时序数据库学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-06-09 14:10:31" itemprop="dateCreated datePublished" datetime="2022-06-09T14:10:31+08:00">2022-06-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-08 21:50:33" itemprop="dateModified" datetime="2022-09-08T21:50:33+08:00">2022-09-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">数据</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li><p>安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull tdengine/tdengine</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动容器</span></span><br><span class="line">docker run -tid --privileged=<span class="literal">true</span> --name=tdengine --hostname=tdengine -p 6030-6042:6030-6042/tcp -p 6030-6043:6030-6043/udp tdengine/tdengine</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>连接使用</p>
-<p>首先需要安装驱动：</p>
-<ul>
-<li>Windows: <a target="_blank" rel="noopener" href="https://www.taosdata.com/assets-download/TDengine-client-2.6.0.1-Windows-x64.exe">https://www.taosdata.com/assets-download/TDengine-client-2.6.0.1-Windows-x64.exe</a></li>
-<li>Linux: <a target="_blank" rel="noopener" href="https://www.taosdata.com/assets-download/TDengine-client-2.6.0.1-Linux-x64.tar.gz">https://www.taosdata.com/assets-download/TDengine-client-2.6.0.1-Linux-x64.tar.gz</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装驱动</span></span><br><span class="line">pip install taospy</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> taos</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_connection</span>():</span><br><span class="line">    <span class="comment"># all parameters are optional.</span></span><br><span class="line">    <span class="comment"># if database is specified,</span></span><br><span class="line">    <span class="comment"># then it must exist.</span></span><br><span class="line">    conn = taos.connect(host=<span class="string">&quot;192.168.195.55&quot;</span>,</span><br><span class="line">                        port=<span class="number">6030</span>,</span><br><span class="line">                        user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">                        password=<span class="string">&quot;taosdata&quot;</span>,</span><br><span class="line">                        database=<span class="string">&quot;log&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;client info:&#x27;</span>, conn.client_info)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;server info:&#x27;</span>, conn.server_info)</span><br><span class="line">    conn.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    test_connection()</span><br></pre></td></tr></table></figure></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取influxdb</span></span><br><span class="line">docker pull influxdb</span><br><span class="line"></span><br><span class="line">sudo docker run -d -p 8083:8083 -p8086:8086 --expose 8090 --expose 8099 --name influxd influxdb</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/06/07/%E9%A1%B9%E7%9B%AE/%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%8D%87%E7%BA%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
-      <meta itemprop="name" content="neuhxy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="neuhxy 的随笔">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | neuhxy 的随笔">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/07/%E9%A1%B9%E7%9B%AE/%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%8D%87%E7%BA%A7/" class="post-title-link" itemprop="url">页面点击按钮实现系统在线升级</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-06-07 16:18:16" itemprop="dateCreated datePublished" datetime="2022-06-07T16:18:16+08:00">2022-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-08 15:32:41" itemprop="dateModified" datetime="2022-09-08T15:32:41+08:00">2022-09-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          有内容被加密了, 请输入密码查看.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/06/07/%E9%A1%B9%E7%9B%AE/%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%8D%87%E7%BA%A7/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1103,6 +1138,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
