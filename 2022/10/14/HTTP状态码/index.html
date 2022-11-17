@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"neuhxy90.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="有内容被加密了, 请输入密码查看.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP状态码">
+<meta property="og:url" content="https://neuhxy90.github.io/2022/10/14/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/index.html">
+<meta property="og:site_name" content="neuhxy 的随笔">
+<meta property="og:description" content="有内容被加密了, 请输入密码查看.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-14T00:37:51.000Z">
+<meta property="article:modified_time" content="2022-10-14T00:38:51.331Z">
+<meta property="article:author" content="neuhxy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://neuhxy90.github.io/2022/10/14/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://neuhxy90.github.io/2022/10/14/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/","path":"2022/10/14/HTTP状态码/","title":"HTTP状态码"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTTP状态码 | neuhxy 的随笔</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">neuhxy 的随笔</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">39</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="neuhxy"
+      src="https://avatars.githubusercontent.com/u/8110174?v=4">
+  <p class="site-author-name" itemprop="name">neuhxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2022/10/14/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
+      <meta itemprop="name" content="neuhxy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTTP状态码 | neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTTP状态码
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-10-14 08:37:51 / 修改时间：08:38:51" itemprop="dateCreated datePublished" datetime="2022-10-14T08:37:51+08:00">2022-10-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="975c42a726915041260a6ecac3cd30e17b8c3b30c571d89fb8c327a0e1124248">3745052190b611767ee0214c68fef2af9218c9ddddf263fcaa984cc9427a5624022db629745336327dbb1b6860d102dd46e3d880eaef72ce5e7128814614eb6e089bc0119960c69cc3fd0b4ec3027359c63e6fdcf53aeb0caafcfd9f11e94b5edf23d7cdea9ef9c3363ef0e42508f06e80a492179fe661beaa7e6da9e9358cfcb193dbed28c2c67c2c3e889f75f584d0184c83a544b13be012d35989ff37220c9dea788b5c766dfa7e7808382bfa28901a28e2b4ebc438f02c43cc6d9d014e42cac27c921f78a4e8e50432116b19c98680fd6db53593effa3416f4f255b0476b92d64c8db9de7384f3434ae836898a084400298433a9aef661e53ec219bcd50b7bc45fbb208c9e63f45e38c5cbcaa57f240f261d5d3dfa96029fb344bb81ef67e3680ae155329b1086b683b7214f3039181b13e14abc6cb5cadc21ff1cff2b80c56ac5027d4da92dfdd32d23b89b56415a2ea07d530787b3967bacbedf47c0db627fb5ea3a1513ce93d68d825ffc788027f8c0a20b49160c3355ad30cd40de351a93ef0a3cc70976cfceba969308f92ced7f2a5dd10b72ecfeade75ee1ea8b3e0b1113cdc3ba0d4158623dc08ac8c9419051665b1184fb8436ae4ef616645a163fe2ec80750ab70f5e3d9ca2b5e5a8d25628814dc41a8dceec492af9fc77c1033acbc2b2006b89d1130d2c414528a499c4e61ccae8f44d9d684eb01c87950a8af1b44aedfc4a961e6a7c9c4deefb093ec71e152080519679e66c5d40e69b1b9b1c61033d40fad2c58efacb97de72923013ca995fafae3e55c5530838eaa10586bef1cabe8b41f3ace6e769595e98cdf672ccc03d558cb975ca90b0b42394b021d41563c789646f1c3bb9ec7e02d6dc6e201fe5403402402fc004d4c1d20a397e2e377d3b344b36246c60dd2952ff1a7e0689f2ac36629346fa87e94f42d998dac871023467dd1df1bbb2409fc9f8d679e21e4e72640038996b89c32fc983f050cd8cf3b76a184c65eb35c8da8464c3be2562d20445b5fa756883f3e85f5e556f11abcea38ea0af6fa731f2b6c9974a3f47c77364a5aa2f0cebccf1c8d389408dcbb8d85afc7637085a52608c356202c337f9e3a8dba4a79d3b90ff6ef5ba147cb29f5b389cbff3d150b3ec43c74673fff43058f626818341b8a23455d0463014757fc2656c6733b4b4f7c97e7254db3be5b0d28290a9a5bbfaa7e23e595beca392cae7c293c3f05bfe7e22614e08c9c113ff6d64b911283fcbc534cca9b835c784f25e726b491830de77ff1e3aca6414e80ad07658d422833f9559317c5f6aa845bb3df93e45d9c52b057038242f4ad1e656462291ce8ea8fe05b15c92367fd744373912d1305f95f74d526f422771aaba905749c50b8c8852e09e5bad48ce00c9feab6dcb961bc9c030cf0781474ff7ebfa5cb63fd7eed0f9fc14b57d3dfb1a43ecafaac1a79f80dda77561ec3afd45a98f3ecccb7cb66b278f2aa7cc1c8523cb7b170bac777b6586a202f27c789ba04f45993c8882600971198e4269c7c4039b8f596d00b1152d9b7c1a085dd4846c9e8adf294195fae5767e4909c5432b38b933709483712c8e2f7449ace1e62f55c722c07deba181c68df5b183baea505b14887bb7b1e883ac54653be3b526206b1fccd0f43dc02c43fbddbc90153207088f35545cb005b8487178fc8412ec2177ec8cb311d04382684f0db935cc7cef41df601f92f3b04daf2dbae913429f1309</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-flip">
+      <input class="hbe hbe-input-field hbe-input-field-flip" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-flip" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-flip" data-content="您好, 这里需要密码.">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>neuhxy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://neuhxy90.github.io/2022/10/14/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" title="HTTP状态码">https://neuhxy90.github.io/2022/10/14/HTTP状态码/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/08/%E9%92%89%E9%92%89%E5%88%9B%E5%BB%BAH5%E5%BA%94%E7%94%A8/" rel="prev" title="钉钉创建H5应用">
+                  <i class="fa fa-chevron-left"></i> 钉钉创建H5应用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/18/Docker%E5%AE%89%E8%A3%85TDengine/" rel="next" title="Docker安装TDengine">
+                  Docker安装TDengine <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">neuhxy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
