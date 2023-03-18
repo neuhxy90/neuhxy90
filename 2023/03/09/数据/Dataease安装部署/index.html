@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"neuhxy90.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="有内容被加密了, 请输入密码查看.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dataease安装部署">
+<meta property="og:url" content="https://neuhxy90.github.io/2023/03/09/%E6%95%B0%E6%8D%AE/Dataease%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="neuhxy 的随笔">
+<meta property="og:description" content="有内容被加密了, 请输入密码查看.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-09T02:46:16.000Z">
+<meta property="article:modified_time" content="2023-03-09T04:32:37.169Z">
+<meta property="article:author" content="neuhxy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://neuhxy90.github.io/2023/03/09/%E6%95%B0%E6%8D%AE/Dataease%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://neuhxy90.github.io/2023/03/09/%E6%95%B0%E6%8D%AE/Dataease%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/","path":"2023/03/09/数据/Dataease安装部署/","title":"Dataease安装部署"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Dataease安装部署 | neuhxy 的随笔</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">neuhxy 的随笔</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="neuhxy"
+      src="https://avatars.githubusercontent.com/u/8110174?v=4">
+  <p class="site-author-name" itemprop="name">neuhxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://neuhxy90.github.io/2023/03/09/%E6%95%B0%E6%8D%AE/Dataease%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/8110174?v=4">
+      <meta itemprop="name" content="neuhxy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Dataease安装部署 | neuhxy 的随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Dataease安装部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-03-09 10:46:16 / 修改时间：12:32:37" itemprop="dateCreated datePublished" datetime="2023-03-09T10:46:16+08:00">2023-03-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="760818bc11fa74b27ee1e887c1ce9b54768f74d10a61d64d36105af4f06be1c8">3745052190b611767ee0214c68fef2afddbb94b0c45713f8984e38be9010432c46eb3674427e5cdd057c74d7439fb510d78e59685a91d77bf7e815998ac1bbaa0bc98f0a0db224fbd236f2da753699a2a8c01c8e203abff4e1c9d664e504a10eccdd8c1e60c92b1285d77c0f6375a19bf32c0de538e005befdf27b258268cc66f07597493b2b453e537942650e72f7d9fbf05f302244cfb25738544759ba39ebcdf40be8458dd1d86557851bafe9aef1b0482a576dc3aa7d0b8a273332f7cb92c41b95fe1705c35ff78617c7a04d1c1d03e1cb5871135df328aa8a0d0d73a39f141324e748ece19b5e7f25020df65dfb40bc3011a16af47a257ce153d156de4645a3ae8a7f7c26fb88f7a0f56e7a91353aa6b424d2c081f250757b1dc9235e150e4531af027559c0f50d1af5db5a446024c2a0f5fcd004249344fda711f2c8f2a52b8dd8230806040791792e3319991b5d9e276505a8749b4d9ea3683160d79e7cd54b6fbe0848b88c209e8b3414117f52e762dce531b876bf78cd965e60596aec27573719c231223d0d1f832d6e291010c8a79b9bda0c6fa396e9ca357dadd6ec2e27da1de556d61f4b901e760348cd1313d8d8b2fdd79c08f296b7d6cd4e479737023b8c68135d14a25c640e89bcbe9fd61dd9fa159007d78939f698e17c879b4274c7f2f9f92053288f5aa394020fcb81add25df81bb4e61670d390779db806a58117f467d2f9e9306972f61e06494ba45df5ce6816f547c6cf7c1a00a4e49faa839a8b10a03e04d690ee017baa875b74ee84fafcd0750b7c4dd8e87d38e2b7c838a34e0f4684aee8bbcb665b4928cade096fab8ac9ac618686c86ab495c9ed974cb7b66f9f8e8233f66cbd0b8b283685c719de93c6699c81da4c9e6fc650d73dedccfa1a17d5999676fa4b292f8b09c99aad6737701ee02a9d84483cb0aa4207228b9612eb3b17dc4aaad3bace888c849104796e73ad7c2cc2d63a9d4ab9dd13fea93dc8335df41833158f4e4f08914a6816871f8b676e8323eeec2b334e547136d133e925ab89fbedc702f97f3bffab7fce37b00c70a7cfc7adaa50172ea919f46271b5393cb6dcae6d94951f6b237b05629583af62986625f7a9dfefa31eb100932c5d8a87a736f6a791c0c6426b455ff760a2352e5650c4e083547d1625fcafdc651e9876f6aa91c4f99817b3480694e2e85d088644a31caef3c3ce3bdaed3deea6811b2d9ce7f94741668d83811451214cb1223f94697c85dd4a8558c703784d3da00574989bc1ba01fd48338eedcbd6ee244ee23304bd937effa41f29ac055a549f9296b8f37a9ff280fbabbf7a11729335b86f7eb60ccf45c875d417fe6cf050833dd494d089e7757719ab5b5e672903a1057096bd5089450357cea91994e6cad5ece337c9d99eedf66df58713fbd9ce7dbf07791d9d8f4dd2d7f29f2b1a3ebdd875b923d1164068e7e27683610b726f78264d54b86db1c51ec6d3e96c40854c9f1fcca27fd7dc2618b5b80d963acbe5fb6c778fe2835c27306f485a8fe0e7a68097e758f4cd482bb97c0ca2697f90340484be5e634c24f9b55497bacdd228f6d0541854618a335287741665165baab238ff89c102dc9137bea5805a5e42f8affdcf063ca8a7154f5a3bbe0ae5720ec2c8ee8a57e024ae4ac5f0067ce9d134101e8ba6318643368d5a57ea2a978b78b9bbe2f1ead914599a29d5d0b6c0ea4ba69342e2e41583c31d63e5e1d4405f5bb2cd97e2eb61ff9a4813705a55865279c33c571bcc54960a89c305ad7e0e55d06a3044b86e49696d40d70dcd279bd492f4e45b6100eb5b2a516b63d73abbc2a3a6b2095cde105a06ab5ba9e44129ef63041f19ddef455c9d3257ed2a5c48e23c76b6368e4ed5add15f19153c9f2102ec4b72f4e200eb37a4c8e10f83b63b5b5df54af943871acfe6d3788746653b664fa1c7ea32bcc34c277f2d3c600f8c1734568c0580ee00d106c825038da79d829f2719b14395140272b4f0cb69233a6b00a2ce9f8ad47f4e4ff66769a63b828622f12a9528bfafb26fdf61a8b08f690e30eadb11150e40dbef5c5234d0d6950e313510b2ae22086e20ec8cbbbc832f00f46adad00b3acf7b544ad3582a224baddddec53b3da98a12d4a77e128456e49c22700d1b77d570687f64bb1d2d3d69ddd48dee471b9d881e05579d76db62176579326f343c73bbf9cae369a9ff3a4914de17c880ac052e525df9acd6644632924d838ebbd7f02f842bc6b331cfcbcdad534c12a562d6e513e32660e60d7a1fab2c880e89e841b166006241494e19e1972399ce399c5bc428aec6ea291fbf0d7d0ebc105d0079d2784eb193aa13e6650c984557456ab0746be1f3db1c8de48b9a8814495178334a33bea0d6a9be262ae6057061b2ba4c0a1a1f7c47dc7db502ca60ac4b7eaf983ee8480822656c92fb306736edee38302311747dcc47da7be20d79e34f7e83e08ffc638ecd87b2dba73b00f811a7dc684581224735c094f3d7fd688450dc4de07132d0b996abb49d0f359ac87033e9e49d1ae1b317d900ac830129850b4b96bf151719cf4cdf63647cf9c0475a8d781b7422cc1bce7bd386579a1ea082cf3eeb1e003cfb912b2e6bb12b3ede3b4369a2ff70ebe23aa4fee3944ae8a99a2b90479e976b8208b27a6b4a048b91751ad33efb93aa2dd27bf4ab03e147698eb45c0ec8139b072502e79d9f00a8f1e5f0727abcfcbb504ca16c7909854f9a3834f3a786705dbe4b6a08b82472042bd141d78afd457b4f38424f62f4815315601d32c17f62de56809f2a55d18dc1b3fa0b44cc6fbbe5d1fa2ecd95a4ac7a6a10673e50fc5151dbaa60f8e041a5883d6e8d875cfa1ede7bed40152d3158d04c420d58c3e7b098173f25ed2a20d42c5e7590a066da8d28d183bd4666181e49730dad72ae998541da2580fb8973aa8d739c71b5c28212c493f934ba92b3eb9721bbf6a8e2505ef775db3660a83880a4eeb3f31da8952af020863d9cbe093eed3df30c939236c2753016b8a1</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-flip">
+      <input class="hbe hbe-input-field hbe-input-field-flip" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-flip" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-flip" data-content="您好, 这里需要密码.">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>neuhxy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://neuhxy90.github.io/2023/03/09/%E6%95%B0%E6%8D%AE/Dataease%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" title="Dataease安装部署">https://neuhxy90.github.io/2023/03/09/数据/Dataease安装部署/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/02/27/Spug%E5%AE%89%E8%A3%85/" rel="prev" title="Spug安装">
+                  <i class="fa fa-chevron-left"></i> Spug安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/09/Ubunut%E5%AE%89%E8%A3%85docker/" rel="next" title="Ubunut安装docker">
+                  Ubunut安装docker <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">neuhxy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
