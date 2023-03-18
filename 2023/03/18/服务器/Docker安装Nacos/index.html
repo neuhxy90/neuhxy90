@@ -27,7 +27,7 @@
 <meta property="og:description" content="Nacos Dynamic Naming and Configuration Service的首字母简称，一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。 Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。 Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-18T10:43:08.000Z">
-<meta property="article:modified_time" content="2023-03-18T10:47:46.688Z">
+<meta property="article:modified_time" content="2023-03-18T11:20:23.986Z">
 <meta property="article:author" content="neuhxy">
 <meta name="twitter:card" content="summary">
 
@@ -238,7 +238,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-03-18 18:43:08 / 修改时间：18:47:46" itemprop="dateCreated datePublished" datetime="2023-03-18T18:43:08+08:00">2023-03-18</time>
+      <time title="创建时间：2023-03-18 18:43:08 / 修改时间：19:20:23" itemprop="dateCreated datePublished" datetime="2023-03-18T18:43:08+08:00">2023-03-18</time>
     </span>
 
   
@@ -268,6 +268,7 @@ Service的首字母简称，一个更易于构建云原生应用的动态服务�
 <p>用户名：nacos</p>
 <p>密码：nacos</p>
 </blockquote>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT &#x27;http://172.20.68.52:<span class="number">8848</span>/nacos/v1/ns/instance?serviceName=spug&amp;ip=172.20.68.118&amp;port=<span class="number">7989</span>&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">curl -X GET &#x27;http://172.20.68.52:<span class="number">8848</span>/nacos/v1/ns/instance/list?serviceName=hwxk3dapi&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">curl -X POST <span class="string">&quot;http://172.20.68.52:8848/nacos/v1/cs/configs?dataId=spug&amp;group=test&amp;content=helloWorld&quot;</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
